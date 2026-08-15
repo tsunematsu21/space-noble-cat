@@ -1,0 +1,44 @@
+---
+import { Image } from "astro:assets";
+import { getCollection, getEntry, render } from "astro:content";
+import Prose from "@components/Prose.astro";
+import Section from "@components/Section.astro";
+import SubLayout from "@layouts/SubLayout.astro";
+
+export async function getStaticPaths() {
+  const comments = await getCollection("comments");
+  return comments.map((comment) => ({
+    params: { id: comment.id },
+    props: { comment },
+  }));
+}
+
+const { comment } = Astro.props;
+const author = comment.data.cast
+  ? await getEntry(comment.data.cast)
+  : comment.data.staff
+    ? await getEntry(comment.data.staff)
+    : undefined;
+
+if (!author) {
+  throw new Error(`Comment author not found: ${comment.id}`);
+}
+
+const { Content } = await render(comment);
+const pageTitle = `${author.data.name}のコメント`;
+const description = `架空アニメ「宇宙貴族猫」で${author.data.role}を務める${author.data.name}からのコメントです。`;
+---
+
+<SubLayout pageTitle={pageTitle} description={description}>
+  <Section title={author.data.name} subtitle={author.data.role}>
+    {comment.data.image && (
+      <Image
+        src={comment.data.image}
+        alt={`${author.data.name}のプロフィール写真`}
+        width="512"
+        class="mx-auto"
+      />
+    )}
+    <Prose><Content /></Prose>
+  </Section>
+</SubLayout>

@@ -1,0 +1,16 @@
+---
+import Hero from "@components/Hero.astro";
+import BaseLayout from "@layouts/BaseLayout.astro";
+
+interface Props {
+  pageTitle?: string;
+  description?: string;
+}
+
+const { pageTitle, description } = Astro.props;
+---
+
+<BaseLayout pageTitle={pageTitle} description={description}>
+  <Hero slot="header" />
+  <slot />
+</BaseLayout>

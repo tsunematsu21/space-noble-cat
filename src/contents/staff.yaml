@@ -1,0 +1,61 @@
+- id: "01"
+  role: 原作
+  name: 百万 一生
+  note: 「宇宙貴族猫」
+  colSpan: true
+- id: "02"
+  role: 監督
+  name: 恩田 報
+- id: "03"
+  role: シリーズ構成・脚本
+  name: 名取 未有
+- id: "04"
+  role: ムードメーカー
+  name: ちくわ
+  note: (雑種・♂・4歳)
+- id: "05"
+  role: キャラクターデザイン
+  name: 五三 りんご
+- id: "06"
+  role: プロップデザイン
+  name: 長谷 履人
+- id: "07"
+  role: メカニカルデザイン
+  name: ヨツモト ジロウ
+- id: "08"
+  role: 美術監督
+  name: 水野 玉也
+- id: "09"
+  role: 色彩設計
+  name: 唐沢 草太
+- id: "10"
+  role: 撮影監督
+  name: 松岡 毬央
+- id: "11"
+  role: 音響監督
+  name: 踏野 鍵
+- id: "12"
+  role: 音楽
+  name: 鍵尾 水平
+- id: "13"
+  role: 編集
+  name: 黒井 大和
+- id: "14"
+  role: オープニング主題歌
+  name: necoze
+  note: 「惑星未遂」
+  colSpan: true
+- id: "15"
+  role: エンディング主題歌
+  name: NINE♡LIVES
+  note: 「あんちまてりあるラプソディ」
+  colSpan: true
+- id: "16"
+  role: SF・科学考証
+  name: 箱田 重実
+  note: (天体猫文学研究所)
+  colSpan: true
+- id: "17"
+  role: アニメーション制作
+  name: MATATABI ANIMATION STUDIO
+  colSpan: true

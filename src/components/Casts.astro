@@ -1,0 +1,31 @@
+---
+import { getCollection } from "astro:content";
+
+const [casts, comments] = await Promise.all([
+  getCollection("casts"),
+  getCollection("comments"),
+]);
+---
+
+<dl class="grid grid-cols-1 md:grid-cols-3 gap-8">
+  {casts.map((cast) => {
+    const comment = comments.find((entry) => entry.data.cast?.id === cast.id);
+
+    return (
+      <div class="text-center">
+        <dt class="text-sm opacity-50">{cast.data.role}</dt>
+        <dd class="text-xl">
+          <p>{cast.data.name}</p>
+          {comment && (
+            <a
+              class="text-sm border border-2 rounded-md px-2 py-1"
+              href={`/comments/${comment.id}`}
+            >
+              COMMENT &rarr;
+            </a>
+          )}
+        </dd>
+      </div>
+    );
+  })}
+</dl>

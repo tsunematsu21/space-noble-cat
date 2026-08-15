@@ -1,0 +1,23 @@
+---
+interface Props {
+  id?: string;
+  title: string;
+  subtitle?: string;
+}
+const { id, title, subtitle } = Astro.props;
+---
+
+<section id={id} class="max-w-4xl mx-auto px-8 space-y-16">
+  <header class="text-yellow-200 font-kaisei text-center">
+    <p class="md:text-xl">{subtitle}</p>
+    <h2 class="font-black text-2xl md:text-4xl">{title}</h2>
+  </header>
+  <div class="space-y-8">
+    <slot />
+  </div>
+  {Astro.slots.has("footer") && (
+    <footer>
+      <slot name="footer" />
+    </footer>
+  )}
+</section>

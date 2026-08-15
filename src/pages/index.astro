@@ -1,0 +1,28 @@
+---
+import { Image } from "astro:assets";
+import Casts from "@components/Casts.astro";
+import Characters from "@components/Characters.astro";
+import Hero from "@components/Hero.astro";
+import Prose from "@components/Prose.astro";
+import Section from "@components/Section.astro";
+import Staff from "@components/Staff.astro";
+import { Content as Introduction } from "@contents/Introduction.md";
+import MainLayout from "@layouts/MainLayout.astro";
+---
+
+<MainLayout>
+  <Section id="introduction" title="Introduction" subtitle="イントロダクション">
+    <Prose>
+      <Introduction />
+    </Prose>
+  </Section>
+  <Section id="character" title="Character" subtitle="キャラクター">
+    <Characters />
+  </Section>
+  <Section id="staff" title="Staff" subtitle="スタッフ">
+    <Staff />
+  </Section>
+  <Section id="casts" title="Casts" subtitle="キャスト">
+    <Casts />
+  </Section>
+</MainLayout>

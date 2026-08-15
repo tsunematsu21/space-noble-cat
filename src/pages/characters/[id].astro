@@ -1,0 +1,39 @@
+---
+import { Image } from "astro:assets";
+import { getCollection, render } from "astro:content";
+import Characters from "@components/Characters.astro";
+import Prose from "@components/Prose.astro";
+import Section from "@components/Section.astro";
+import SubLayout from "@layouts/SubLayout.astro";
+
+export async function getStaticPaths() {
+  const characters = await getCollection("characters");
+  return characters.map((character) => ({
+    params: { id: character.id },
+    props: { character },
+  }));
+}
+
+const { character } = Astro.props;
+const { Content } = await render(character);
+const pageTitle = [character.data.name, character.data.peerage]
+  .filter(Boolean)
+  .join(" ");
+const description = `架空アニメ「宇宙貴族猫」に登場する${pageTitle}のキャラクター紹介です。`;
+---
+
+<SubLayout pageTitle={pageTitle} description={description}>
+  <Section
+    title={`${character.data.name} ${character.data.peerage}`}
+    subtitle={`二つ名: ${character.data.epithet}`}
+  >
+    <Image
+      src={character.data.image}
+      alt={character.data.name}
+      width="512"
+      class="mx-auto"
+    />
+    <Prose><Content /></Prose>
+    <Characters slot="footer" />
+  </Section>
+</SubLayout>

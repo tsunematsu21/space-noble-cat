@@ -1,0 +1,38 @@
+---
+import { getCollection } from "astro:content";
+
+const [allStaff, comments] = await Promise.all([
+  getCollection("staff"),
+  getCollection("comments"),
+]);
+---
+
+<dl class="grid grid-cols-1 md:grid-cols-3 gap-8">
+  {allStaff.map((staff) => {
+    const comment = comments.find((entry) => entry.data.staff?.id === staff.id);
+
+    return (
+      <div
+        class:list={["text-center", staff.data.colSpan ? "md:col-span-3" : ""]}
+      >
+        <dt class="text-sm opacity-50">{staff.data.role}</dt>
+        <dd class="text-xl">
+          <p class="inline-flex flex-col gap-1">
+            <span>{staff.data.name}</span>
+            {staff.data.note && (
+              <span class="text-sm">{staff.data.note}</span>
+            )}
+          </p>
+          {comment && (
+            <a
+              class="mt-3 inline-flex rounded-full border border-white/30 px-4 py-2 text-sm transition hover:border-white hover:bg-white hover:text-zinc-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+              href={`/comments/${comment.id}`}
+            >
+              Comment
+            </a>
+          )}
+        </dd>
+      </div>
+    );
+  })}
+</dl>

@@ -1,0 +1,17 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Kaisei+HarunoUmi:wght@400;500;700&display=swap'); */
+@import url("https://fonts.googleapis.com/css2?family=Gravitas+One&family=Kaisei+HarunoUmi&display=swap");
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --font-kaisei: "Kaisei HarunoUmi", serif;
+  --font-gravitas: "Gravitas One", serif;
+}
+
+body {
+  @apply bg-zinc-900 text-white;
+}
+
+a {
+  @apply hover:opacity-50 transition-all duration-500;
+}

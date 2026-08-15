@@ -1,0 +1,23 @@
+---
+import { Image } from "astro:assets";
+import Logo from "@assets/Logo.png";
+import BaseLayout from "@layouts/BaseLayout.astro";
+
+interface Props {
+  pageTitle?: string;
+  description?: string;
+}
+
+const { pageTitle, description } = Astro.props;
+---
+
+<BaseLayout pageTitle={pageTitle} description={description}>
+  <a href="/" slot="header">
+    <Image
+      src={Logo}
+      alt="宇宙貴族猫 - Space Noble Cat"
+      class="md:max-w-2xl mx-auto z-50"
+    />
+  </a>
+  <slot />
+</BaseLayout>

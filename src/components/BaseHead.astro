@@ -1,0 +1,38 @@
+---
+import OgpImage from "@assets/OGP.png";
+
+interface Props {
+  pageTitle?: string;
+  description?: string;
+}
+
+const siteTitle = "架空アニメ「宇宙貴族猫」公式サイト";
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const { pageTitle, description = "架空のTVアニメ「宇宙貴族猫」の公式サイト" } =
+  Astro.props;
+const title = pageTitle ? `${pageTitle} - ${siteTitle}` : siteTitle;
+---
+
+<meta charset="utf-8">
+<link rel="icon" href="/favicon.ico">
+<meta name="viewport" content="width=device-width">
+<meta name="generator" content={Astro.generator}>
+
+<link rel="canonical" href={canonicalURL}>
+
+<title>{title}</title>
+<meta name="title" content={title}>
+<meta name="description" content={description}>
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content={siteTitle}>
+<meta property="og:url" content={Astro.url}>
+<meta property="og:title" content={title}>
+<meta property="og:description" content={description}>
+<meta property="og:image" content={new URL(OgpImage.src, Astro.site)}>
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content={Astro.url}>
+<meta name="twitter:title" content={title}>
+<meta name="twitter:description" content={description}>
+<meta name="twitter:image" content={new URL(OgpImage.src, Astro.site)}>
