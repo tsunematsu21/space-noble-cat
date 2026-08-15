@@ -3,7 +3,9 @@ import { Image } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
 import { getCollection } from "astro:content";
 
-const characters = await getCollection("characters");
+const characters = (await getCollection("characters")).sort(
+  (a, b) => a.data.order - b.data.order,
+);
 ---
 
 <ul class="grid grid-cols-1 md:grid-cols-3 gap-8">

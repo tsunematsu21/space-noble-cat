@@ -1,6 +1,6 @@
 ---
 staff: "01"
-image: "@assets/staff01.png"
+image: "@assets/staff/momoyorozu_kazuo.png"
 ---
 『宇宙貴族猫』は、猫が宇宙を旅する話であり、同時に、宇宙のほうが猫に振り回される話でもあります。
 

@@ -7,7 +7,9 @@ import Section from "@components/Section.astro";
 import SubLayout from "@layouts/SubLayout.astro";
 
 export async function getStaticPaths() {
-  const characters = await getCollection("characters");
+  const characters = (await getCollection("characters")).sort(
+    (a, b) => a.data.order - b.data.order,
+  );
   return characters.map((character) => ({
     params: { id: character.id },
     props: { character },

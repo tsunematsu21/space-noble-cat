@@ -6,9 +6,11 @@ const characters = defineCollection({
   loader: glob({
     pattern: "**/*.md",
     base: "./src/contents/characters",
+    generateId: ({ entry }) => entry.replace(/^\d+\./, "").replace(/\.md$/, ""),
   }),
   schema: ({ image }) =>
     z.object({
+      order: z.number(),
       epithet: z.string().optional(),
       name: z.string(),
       peerage: z.string().optional(),
