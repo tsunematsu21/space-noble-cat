@@ -2,7 +2,9 @@
 import { Image } from "astro:assets";
 import Casts from "@components/Casts.astro";
 import Characters from "@components/Characters.astro";
+import Episodes from "@components/Episodes.astro";
 import Hero from "@components/Hero.astro";
+import OnAir from "@components/OnAir.astro";
 import Prose from "@components/Prose.astro";
 import Section from "@components/Section.astro";
 import Staff from "@components/Staff.astro";
@@ -11,10 +13,16 @@ import MainLayout from "@layouts/MainLayout.astro";
 ---
 
 <MainLayout>
+  <Section id="onair" title="On Air" subtitle="オンエア">
+    <OnAir />
+  </Section>
   <Section id="introduction" title="Introduction" subtitle="イントロダクション">
     <Prose>
       <Introduction />
     </Prose>
+  </Section>
+  <Section id="episodes" title="Episodes" subtitle="エピソード">
+    <Episodes />
   </Section>
   <Section id="character" title="Character" subtitle="キャラクター">
     <Characters />

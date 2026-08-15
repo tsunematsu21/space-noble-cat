@@ -1,0 +1,21 @@
+---
+import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
+
+const episodes = await getCollection("episodes");
+---
+
+<ul class="grid grid-cols-1 md:grid-cols-3 gap-8">
+  {episodes.map((episode) =>(
+    <li class="flex items-start justify-center">
+      <a href={`/episodes/${episode.id}`} class="rounded-md overflow-hidden">
+        <span>
+          <span class="text-sm">
+            #{episode.id} {episode.data.title}
+          </span>
+          <Image src={episode.data.image} alt={episode.data.title} width="512" class="w-full aspect-video md:w-64 w-64 object-cover" />
+        </span>
+      </a>
+    </li>
+  ))}
+</ul>

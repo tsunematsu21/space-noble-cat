@@ -1,5 +1,6 @@
 ---
 import { getCollection } from "astro:content";
+import LinkButton from "@components/LinkButton.astro";
 
 const [casts, comments] = await Promise.all([
   getCollection("casts"),
@@ -14,15 +15,12 @@ const [casts, comments] = await Promise.all([
     return (
       <div class="text-center">
         <dt class="text-sm opacity-50">{cast.data.role}</dt>
-        <dd class="text-xl">
+        <dd class="text-xl space-y-2">
           <p>{cast.data.name}</p>
           {comment && (
-            <a
-              class="text-sm border border-2 rounded-md px-2 py-1"
-              href={`/comments/${comment.id}`}
-            >
-              COMMENT &rarr;
-            </a>
+            <LinkButton to={`/comments/${comment.id}`}>
+              COMMENT
+            </LinkButton>
           )}
         </dd>
       </div>

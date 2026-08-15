@@ -1,0 +1,35 @@
+---
+import { Image } from "astro:assets";
+import { getCollection, render } from "astro:content";
+import Prose from "@components/Prose.astro";
+import Section from "@components/Section.astro";
+import SubLayout from "@layouts/SubLayout.astro";
+
+export async function getStaticPaths() {
+  const episodes = await getCollection("episodes");
+  return episodes.map((episode) => ({
+    params: { id: episode.id },
+    props: { episode },
+  }));
+}
+
+const { episode } = Astro.props;
+const { Content } = await render(episode);
+const pageTitle = `#${episode.id} ${episode.data.title}`;
+const description = `架空アニメ「宇宙貴族猫」のエピソード「${pageTitle}」の紹介です。`;
+---
+
+<SubLayout pageTitle={pageTitle} description={description}>
+  <Section
+    title={`${episode.data.title}`}
+    subtitle={`Episode ${episode.data.episode}`}
+  >
+    <Image
+      src={episode.data.image}
+      alt={episode.data.title}
+      width="512"
+      class="mx-auto"
+    />
+    <Prose><Content /></Prose>
+  </Section>
+</SubLayout>

@@ -52,4 +52,17 @@ const comments = defineCollection({
       }),
 });
 
-export const collections = { characters, casts, staff, comments };
+const episodes = defineCollection({
+  loader: glob({
+    pattern: "**/*.md",
+    base: "./src/contents/episodes",
+  }),
+  schema: ({ image }) =>
+    z.object({
+      episode: z.number(),
+      title: z.string(),
+      image: image(),
+    }),
+});
+
+export const collections = { characters, casts, staff, comments, episodes };
