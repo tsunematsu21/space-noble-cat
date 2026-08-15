@@ -7,13 +7,28 @@ const episodes = await getCollection("episodes");
 
 <ul class="grid grid-cols-1 md:grid-cols-3 gap-8">
   {episodes.map((episode) =>(
-    <li class="flex items-start justify-center">
-      <a href={`/episodes/${episode.id}`} class="rounded-md overflow-hidden">
-        <span>
-          <span class="text-sm">
-            #{episode.id} {episode.data.title}
+    <li>
+      <a
+        href={`/episodes/${episode.id}`}
+        class="group block overflow-hidden rounded-2xl border border-white/10 bg-black/30 shadow-xl shadow-black/20 hover:-translate-y-2 hover:border-yellow-200/50 hover:shadow-purple-500/20"
+      >
+        <span class="block overflow-hidden">
+          <Image
+            src={episode.data.image}
+            alt={episode.data.title}
+            width="512"
+            class="w-full aspect-video object-cover transition-transform duration-700 group-hover:scale-105"
+          />
+          <span class="flex items-center gap-3 border-t border-white/10 px-4 py-4">
+            <span
+              class="rounded-full bg-yellow-200 px-2.5 py-1 text-xs font-bold text-slate-950"
+            >
+              #{episode.data.episode}
+            </span>
+            <span class="font-kaisei text-lg">
+              {episode.data.title}
+            </span>
           </span>
-          <Image src={episode.data.image} alt={episode.data.title} width="512" class="w-full aspect-video md:w-64 w-64 object-cover" />
         </span>
       </a>
     </li>

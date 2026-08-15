@@ -13,10 +13,12 @@ const [casts, comments] = await Promise.all([
     const comment = comments.find((entry) => entry.data.cast?.id === cast.id);
 
     return (
-      <div class="text-center">
-        <dt class="text-sm opacity-50">{cast.data.role}</dt>
-        <dd class="text-xl space-y-2">
-          <p>{cast.data.name}</p>
+      <div
+        class="rounded-2xl border border-white/10 bg-white/5 p-6 text-center shadow-lg shadow-black/10"
+      >
+        <dt class="text-xs tracking-widest text-white/50">{cast.data.role}</dt>
+        <dd class="mt-2 space-y-4 text-xl">
+          <p class="font-kaisei">{cast.data.name}</p>
           {comment && (
             <LinkButton to={`/comments/${comment.id}`}>
               COMMENT

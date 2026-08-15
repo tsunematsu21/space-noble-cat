@@ -8,6 +8,10 @@
   --font-gravitas: "Gravitas One", serif;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   @apply text-white;
   background:
@@ -94,6 +98,10 @@ body > * {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
   body::before,
   body::after {
     animation: none;
@@ -101,5 +109,15 @@ body > * {
 }
 
 a {
-  @apply hover:opacity-50 transition-all duration-500;
+  @apply transition-all duration-500;
+}
+
+a:focus-visible {
+  outline: 2px solid rgb(254 240 138);
+  outline-offset: 4px;
+}
+
+::selection {
+  color: white;
+  background: rgb(126 34 206 / 70%);
 }

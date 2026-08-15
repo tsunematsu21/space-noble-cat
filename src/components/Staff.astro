@@ -14,14 +14,17 @@ const [allStaff, comments] = await Promise.all([
 
     return (
       <div
-        class:list={["text-center", staff.data.colSpan ? "md:col-span-3" : ""]}
+        class:list={[
+          "rounded-2xl border border-white/10 bg-white/5 p-5 text-center shadow-lg shadow-black/10",
+          staff.data.colSpan ? "md:col-span-3" : "",
+        ]}
       >
-        <dt class="text-sm opacity-50">{staff.data.role}</dt>
-        <dd class="text-xl space-y-1">
+        <dt class="text-xs tracking-widest text-white/50">{staff.data.role}</dt>
+        <dd class="mt-2 space-y-4 text-xl">
           <p class="flex flex-col gap-1">
-            <span>{staff.data.name}</span>
+            <span class="font-kaisei">{staff.data.name}</span>
             {staff.data.note && (
-              <span class="text-sm">{staff.data.note}</span>
+              <span class="text-sm text-white/70">{staff.data.note}</span>
             )}
           </p>
           {comment && (

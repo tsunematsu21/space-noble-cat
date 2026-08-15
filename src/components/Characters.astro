@@ -1,6 +1,5 @@
 ---
 import { Image } from "astro:assets";
-import type { CollectionEntry } from "astro:content";
 import { getCollection } from "astro:content";
 
 const characters = (await getCollection("characters")).sort(
@@ -10,14 +9,29 @@ const characters = (await getCollection("characters")).sort(
 
 <ul class="grid grid-cols-1 md:grid-cols-3 gap-8">
   {characters.map((character) =>(
-    <li class="flex items-start justify-center">
-      <a href={`/characters/${character.id}`} class="rounded-md overflow-hidden">
+    <li>
+      <a
+        href={`/characters/${character.id}`}
+        class="group block overflow-hidden rounded-2xl border border-white/10 bg-black/20 shadow-xl shadow-black/20 hover:-translate-y-2 hover:border-yellow-200/50 hover:shadow-purple-500/20"
+      >
         <span class="block relative">
-          <span class="text-sm bg-black/50 p-2 w-full text-center absolute bottom-0">
+          <Image
+            src={character.data.image}
+            alt={character.data.name}
+            width="512"
+            class="w-full aspect-square object-contain bg-gradient-to-b from-white/10 to-purple-950/30 transition-transform duration-700 group-hover:scale-105"
+          />
+          <span
+            class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950 via-slate-950/80 to-transparent px-4 pt-12 pb-4 text-center"
+          >
+            <span class="block text-xs tracking-widest text-yellow-200/80">
+              {character.data.epithet}
+            </span>
+            <span class="mt-1 block text-lg font-kaisei">
             {character.data.name}
             {character.data.peerage}
+            </span>
           </span>
-          <Image src={character.data.image} alt={character.data.name} width="512" class="w-full aspect-square md:w-64 w-64 object-contain bg-gray-500" />
         </span>
       </a>
     </li>

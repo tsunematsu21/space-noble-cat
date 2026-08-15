@@ -6,7 +6,12 @@ interface Props {
 const { to } = Astro.props;
 ---
 
-<a href={to} class="border border-2 rounded-md text-xs px-4 py-1">
+<a
+  href={to}
+  class="group inline-flex items-center rounded-full border border-yellow-200/40 bg-yellow-200/5 px-4 py-2 text-xs tracking-widest text-yellow-100 shadow-lg shadow-black/20 hover:-translate-y-0.5 hover:border-yellow-200 hover:bg-yellow-200 hover:text-slate-950"
+>
   <span><slot /></span>
-  <span class="ml-2">&rarr;</span>
+  <span class="ml-2 transition-transform duration-300 group-hover:translate-x-1"
+    >&rarr;</span
+  >
 </a>

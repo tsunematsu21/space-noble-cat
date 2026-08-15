@@ -8,11 +8,13 @@ const { current } = Astro.props;
 
 <nav
   aria-label="パンくずリスト"
-  class="max-w-4xl mx-auto px-8 text-sm text-white/60"
+  class="max-w-5xl mx-auto px-6 text-sm text-white/60 md:px-0"
 >
-  <ol class="flex flex-wrap items-center gap-2">
-    <li><a href="/">TOP</a></li>
-    <li aria-hidden="true">›</li>
+  <ol
+    class="inline-flex flex-wrap items-center gap-2 rounded-full border border-white/10 bg-black/20 px-4 py-2 backdrop-blur-sm"
+  >
+    <li><a href="/" class="hover:text-yellow-200">TOP</a></li>
+    <li aria-hidden="true" class="text-yellow-200/60">›</li>
     <li aria-current="page" class="text-white">{current}</li>
   </ol>
 </nav>
