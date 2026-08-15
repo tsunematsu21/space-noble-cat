@@ -1,10 +1,11 @@
 ---
 import { Image } from "astro:assets";
 import Logo from "@assets/Logo.png";
+import Breadcrumbs from "@components/Breadcrumbs.astro";
 import BaseLayout from "@layouts/BaseLayout.astro";
 
 interface Props {
-  pageTitle?: string;
+  pageTitle: string;
   description?: string;
 }
 
@@ -19,5 +20,8 @@ const { pageTitle, description } = Astro.props;
       class="md:max-w-2xl mx-auto z-50"
     />
   </a>
-  <slot />
+  <div class="space-y-12">
+    <Breadcrumbs current={pageTitle} />
+    <slot />
+  </div>
 </BaseLayout>

@@ -1,0 +1,18 @@
+---
+interface Props {
+  current: string;
+}
+
+const { current } = Astro.props;
+---
+
+<nav
+  aria-label="パンくずリスト"
+  class="max-w-4xl mx-auto px-8 text-sm text-white/60"
+>
+  <ol class="flex flex-wrap items-center gap-2">
+    <li><a href="/">TOP</a></li>
+    <li aria-hidden="true">›</li>
+    <li aria-current="page" class="text-white">{current}</li>
+  </ol>
+</nav>
