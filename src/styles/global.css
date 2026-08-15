@@ -9,7 +9,95 @@
 }
 
 body {
-  @apply bg-zinc-900 text-white;
+  @apply text-white;
+  background:
+    radial-gradient(
+      circle at 15% 20%,
+      rgb(255 255 255 / 75%) 0 1px,
+      transparent 1.5px
+    ),
+    radial-gradient(
+      circle at 75% 35%,
+      rgb(255 255 255 / 60%) 0 1px,
+      transparent 1.5px
+    ),
+    radial-gradient(
+      circle at 45% 70%,
+      rgb(255 255 255 / 50%) 0 1px,
+      transparent 1.5px
+    ),
+    linear-gradient(135deg, #090a1f, #120a25 50%, #071428);
+  background-size:
+    220px 220px,
+    340px 340px,
+    420px 420px,
+    auto;
+  isolation: isolate;
+  overflow-x: clip;
+}
+
+body::before,
+body::after {
+  content: "";
+  inset: 0;
+  pointer-events: none;
+  position: fixed;
+  z-index: 0;
+}
+
+body::before {
+  background:
+    radial-gradient(ellipse at 15% 15%, rgb(82 118 255 / 30%), transparent 38%),
+    radial-gradient(ellipse at 85% 30%, rgb(186 91 255 / 24%), transparent 42%),
+    radial-gradient(ellipse at 55% 90%, rgb(26 198 255 / 16%), transparent 45%);
+  filter: blur(24px);
+  transform: scale(1.15);
+  animation: space-drift 24s ease-in-out infinite alternate;
+}
+
+body::after {
+  background-image:
+    radial-gradient(circle, rgb(255 255 255 / 90%) 0 1px, transparent 1.5px),
+    radial-gradient(circle, rgb(255 241 184 / 75%) 0 1px, transparent 1.5px);
+  background-position:
+    0 0,
+    90px 140px;
+  background-size:
+    180px 180px,
+    290px 290px;
+  animation: star-twinkle 5s ease-in-out infinite alternate;
+}
+
+body > * {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes space-drift {
+  from {
+    transform: scale(1.15) translate3d(-2%, -1%, 0);
+  }
+
+  to {
+    transform: scale(1.2) translate3d(2%, 1%, 0);
+  }
+}
+
+@keyframes star-twinkle {
+  from {
+    opacity: 0.35;
+  }
+
+  to {
+    opacity: 0.8;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body::before,
+  body::after {
+    animation: none;
+  }
 }
 
 a {
