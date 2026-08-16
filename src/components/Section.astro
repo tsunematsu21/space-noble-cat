@@ -9,12 +9,8 @@ const { id, title, subtitle } = Astro.props;
 
 <section
   id={id}
-  class="relative max-w-5xl mx-auto overflow-hidden rounded-3xl border border-white/10 bg-slate-950/40 px-6 py-12 shadow-2xl shadow-purple-950/30 backdrop-blur-md scroll-mt-8 md:px-12 md:py-16"
+  class="relative mx-auto w-[calc(100%-2rem)] max-w-5xl overflow-hidden rounded-3xl border border-white/10 bg-slate-950/40 px-6 py-12 shadow-2xl shadow-purple-950/30 backdrop-blur-md scroll-mt-8 md:w-[calc(100%-4rem)] md:px-12 md:py-16"
 >
-  <div
-    aria-hidden="true"
-    class="absolute -top-24 -right-24 size-64 rounded-full bg-purple-500/10 blur-3xl"
-  ></div>
   <header class="relative text-yellow-200 font-kaisei text-center space-y-3">
     <p class="text-xs uppercase tracking-[0.35em] md:text-sm">{subtitle}</p>
     <div class="flex items-center justify-center gap-4">
